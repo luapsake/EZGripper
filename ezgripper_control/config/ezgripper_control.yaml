@@ -1,0 +1,15 @@
+ezgripper_single_mount:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  
+  # Position Controllers ---------------------------------------
+  joint_position_controller1:
+    type: position_controllers/JointPositionController
+    joint: left_ezgripper_knuckle_palm_L1_1
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_position_controller2:
+    type: position_controllers/JointPositionController
+    joint: left_ezgripper_knuckle_palm_L1_2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
