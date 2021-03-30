@@ -233,7 +233,7 @@
 <xacro:macro name="ezgripper_knuckle_trans" params="prefix postfix">
    <transmission name="${prefix}_ezgripper_trans_${postfix}">
       <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}_ezgripper_knuckle_${postfix}">
+      <joint name="${prefix}_ezgripper_knuckle_palm_L1_${postfix}">
          <hardwareInterface>PositionJointInterface</hardwareInterface>
       </joint>
       <actuator name="${prefix}_ezgripper_motor${postfix}">

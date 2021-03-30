@@ -222,7 +222,7 @@
     <!-- transmissions for Gazebo -->
 
 <xacro:macro name="ezgripper_knuckle_trans" params="prefix postfix">
-   <transmission name="${prefix}_ezgripper_trans_${postfix}">
+   <transmission name="${prefix}_ezgripper_knuckle_${postfix}">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${prefix}_ezgripper_knuckle_palm_L1_${postfix}">
          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
