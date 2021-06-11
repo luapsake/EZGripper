@@ -1,5 +1,12 @@
 # EZGripper
 
+The luapsake/EZGripper is a development branch and not the official branch.  This branch has the following differences:
+- All EZGripper meshes and URDF reflect the latest injection molded gripper (the primary benefit of this branch)
+- It works through ROS Melodic.  It has issues on ROS Noetic.
+- The directory structure has been updated to include a bit more hierarchy to support Gazebo
+- ezgripper_driver should be ignored - do not use
+- 
+
 These are the EZGripper ROS drivers.  If you are not using ROS, use https://github.com/SAKErobotics/SAKErobotics
 
 ## Install the EZGripper ROS Driver (Indigo or Kinetic)
@@ -17,7 +24,8 @@ These are the EZGripper ROS drivers.  If you are not using ROS, use https://gith
 3) Download code:
 
 	$ cd ~/catkin_ws/src
-	$ git clone https://github.com/SAKErobotics/EZGripper.git
+	// $ git clone https://github.com/SAKErobotics/EZGripper.git
+	$ git clone https://github.com/luapsake/EZGripper
 	$ cd ..
 	$ catkin_make
 
@@ -26,19 +34,19 @@ These are the EZGripper ROS drivers.  If you are not using ROS, use https://gith
   - ~baud - baud rate of the serial device, not used for tcp
   - grippers - definition of grippers on this serial bus: the gripper name to use for the action interface and the servo id of the gripper (several ids if several grippers are to be used as one group), for example {left:[9], right:[10,11]}.  By default, SAKE Robotics delivers its grippers with address 1 for Duals and 1 and 2 for Quads and 57kbps.
 
-5) Launch the node - example launch files to support various EZGripper configurations.  
-
-	$ roslaunch ezgripper_driver joy.launch
-	  // joy.launch is configured for a single servo gripper (dual) and the USB interface
-	  
-	$ roslaunch ezgripper_driver joy2.launch
-	  // joy2.launch is configured for two independent servos (quad independent) and the USB interface
-	  
-	$ roslaunch ezgripper_driver joy2sync.launch
-	  // joy2sync.launch controls two servos as if it were a single servo (quad dependent) and the USB interface
-	  
-	$ roslaunch ezgripper_driver joy_tcp.launch
-	  // joy_tcp.launch controls a single servo via TCP instead of USB
+// 5) Launch the node - example launch files to support various EZGripper configurations.  
+//
+//	$ roslaunch ezgripper_driver joy.launch
+//	  // joy.launch is configured for a single servo gripper (dual) and the USB interface
+//	  
+//	$ roslaunch ezgripper_driver joy2.launch
+//	  // joy2.launch is configured for two independent servos (quad independent) and the USB interface
+//	  
+//	$ roslaunch ezgripper_driver joy2sync.launch
+//	  // joy2sync.launch controls two servos as if it were a single servo (quad dependent) and the USB interface
+//	  
+//	$ roslaunch ezgripper_driver joy_tcp.launch
+//	  // joy_tcp.launch controls a single servo via TCP instead of USB
 	
 ## Action API
 
