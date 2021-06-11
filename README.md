@@ -9,7 +9,7 @@ The luapsake/EZGripper is a development branch and not the official branch.  Thi
 
 These are the EZGripper ROS drivers.  If you are not using ROS, use https://github.com/SAKErobotics/SAKErobotics
 
-## Install the EZGripper ROS Driver (Indigo or Kinetic)
+## Install the EZGripper ROS Driver (Indigo, Kinetic or Melodic -- Not Noetic yet)
 
 1) Install the python EZGripper library https://github.com/SAKErobotics/libezgripper
 
