@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot name="ezgripper" xmlns:xacro="http://ros.org/wiki/xacro">
 
-<!--macro name="ezgripper_triple_mount" params="*origin"-->
+
+
+
+<xacro:include filename="$(find minilift_description)/urdf/macros.xacro" />
 
 <xacro:macro name="ezgripper_triple_mount" params="prefix parent_link *origin">
 
@@ -14,6 +17,7 @@
         <geometry>
           <mesh filename="package://ezgripper_description/meshes/visual/SAKE_Triple_Mount.stl"/>
         </geometry>
+        <material name="dark_grey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -26,6 +30,10 @@
       <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
     </inertial>
     </link>
+
+    <gazebo reference="${prefix}_ezgripper_mount">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
 
     <joint name="${prefix}_ezgripper_mount2base" type="fixed">
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
@@ -59,6 +67,7 @@
         <geometry>
           <mesh filename="package://ezgripper_description/meshes/visual/SAKE_Palm_IM.stl"/>
         </geometry>
+        <material name="dark_grey"/>
       </visual>
       <collision>
         <origin xyz="0.0 0 0" rpy="0 0 0"/>
@@ -71,6 +80,10 @@
       <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
     </inertial>
     </link>
+
+    <gazebo reference="${prefix}_ezgripper_palm_link">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
 
     <joint name="${prefix}_ezgripper_mount2palm" type="fixed">
         <xacro:insert_block name="origin"/>
@@ -113,6 +126,7 @@
         <geometry>
           <mesh filename="package://ezgripper_description/meshes/visual/SAKE_Finger_L1_IM.stl"/>
         </geometry>
+        <material name="dark_grey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -125,6 +139,11 @@
         <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
       </inertial>
     </link>
+
+    <gazebo reference="${prefix}_ezgripper_finger_L1_${postfix}">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
 </xacro:macro>
 
 
@@ -135,6 +154,7 @@
         <geometry>
           <mesh filename="package://ezgripper_description/meshes/visual/SAKE_Finger_L2_IM.stl"/>
         </geometry>
+        <material name="dark_grey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -147,6 +167,11 @@
         <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
       </inertial>
     </link>
+
+    <gazebo reference="${prefix}_ezgripper_finger_L2_${postfix}">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
 </xacro:macro>
 
 
@@ -157,6 +182,7 @@
         <geometry>
           <mesh filename="package://ezgripper_description/meshes/visual/SAKE_Finger_Pad_IM.stl"/>
         </geometry>
+        <material name="dark_grey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -169,6 +195,11 @@
         <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
       </inertial>
     </link>
+
+    <gazebo reference="${prefix}_ezgripper_finger_pad_${postfix}">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
 </xacro:macro>
 
 
@@ -196,7 +227,7 @@
       <child link="${prefix}_ezgripper_finger_L1_${postfix}"/>
       <origin xyz="0.0595 ${reflectY*0.03} 0" rpy="${1.5708 * reflectR} 0 0"/>
       <axis xyz="0 1 0"/>
-      <limit lower=".27" upper="-1.57075" effort="1" velocity="3.67"/>
+      <limit lower="-1.57075" upper=".27" effort="1" velocity="3.67"/>
       <xacro:if value="${mimic_test}">
            <mimic joint="${prefix}_ezgripper_knuckle_palm_L1_1"/>
       </xacro:if>
