@@ -103,13 +103,13 @@
     <ezgripper_finger_pad prefix="${prefix}" postfix="2" reflect="1" />
 
     <ezgripper_knuckle_palm_L1 prefix="${prefix}" postfix="1" reflectY="1" reflectZ="1" reflectR="-1" mimic_test="false"/>
-    <ezgripper_knuckle_palm_L1 prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="1" mimic_test="true"/>
+    <ezgripper_knuckle_palm_L1 prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="1" mimic_test="false"/>
 
     <ezgripper_knuckle_L1_L2 prefix="${prefix}" postfix="1" reflectY="1" reflectZ="1" reflectR="-1" mimic_test="false"/>
-    <ezgripper_knuckle_L1_L2 prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="1" mimic_test="true"/>
+    <ezgripper_knuckle_L1_L2 prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="1" mimic_test="false"/>
 
     <ezgripper_joint_finger_pad prefix="${prefix}" postfix="1" reflectY="1" reflectZ="1" reflectR="1" mimic_test="false"/>
-    <ezgripper_joint_finger_pad prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="-1" mimic_test="true"/>
+    <ezgripper_joint_finger_pad prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="-1" mimic_test="false"/>
 
     <ezgripper_knuckle_trans prefix="${prefix}" postfix="1"/>
     <ezgripper_knuckle_trans prefix="${prefix}" postfix="2"/>
