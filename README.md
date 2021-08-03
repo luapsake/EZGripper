@@ -24,9 +24,11 @@ These are the EZGripper ROS drivers.  If you are not using ROS, use https://gith
 3) Download code:
 
 	$ cd ~/catkin_ws/src
-	// $ git clone https://github.com/SAKErobotics/EZGripper.git
+	
 	$ git clone https://github.com/luapsake/EZGripper
+	
 	$ cd ..
+	
 	$ catkin_make
 
 4) Setup parameters in joy.launch file
