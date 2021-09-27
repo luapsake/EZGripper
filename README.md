@@ -47,13 +47,17 @@ These are the EZGripper ROS drivers.  If you are not using ROS, use https://gith
 The driver provides an implementation of the SimpleActionServer, that takes in [control_msgs/GripperCommand](http://docs.ros.org/indigo/api/control_msgs/html/action/GripperCommand.html) actions.
 A sample client ([nodes/client.py](ezgripper_driver/nodes/client.py)) is included that provides joystick control using the action API.
 
-## urdf Models
+## urdf and 3D models
 
-see README.md in the urdf directory.
-https://github.com/SAKErobotics/EZGripper/tree/master/ezgripper_driver/urdf
+This release includes the latest 3D models that match the injection molded EZGripper robot grippers.  
+EZGripper/ezgripper_description/meshes/
+
+The relationship between the 3D pieces are defined by the URDF 
+EZGripper/ezgripper_description/urdf/ezgripper_single_mount.urdf.xacro
+
+## TroubleShootingEZGripper/ezgripper_description/meshes/
 
 
-## TroubleShooting
 
 Serial connection issues:
 
