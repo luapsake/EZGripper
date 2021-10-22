@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot name="ezgripper" xmlns:xacro="http://ros.org/wiki/xacro">
 
-<!-- Toggle old behaviour -->
-<xacro:arg name="activate_control" default="false" />
+
 
 <xacro:include filename="$(find minilift_description)/urdf/macros.xacro" />
-
-
 
 <xacro:macro name="ezgripper_triple_mount" params="prefix parent_link *origin">
 
@@ -45,17 +42,17 @@
     </joint>
 
 
-    <ezgripper_palm prefix="${prefix}1" parent_link="${prefix}_ezgripper_mount">
-    <origin xyz = "0.01 0.0 0.068" rpy = "0 0 0"/>
-    </ezgripper_palm>
+    <xacro:ezgripper_palm prefix="${prefix}1" parent_link="${prefix}_ezgripper_mount">
+      <origin xyz = "0.01 0.0 0.068" rpy = "0 0 0"/>
+    </xacro:ezgripper_palm>
 
-    <ezgripper_palm prefix="${prefix}2" parent_link="${prefix}_ezgripper_mount">
-    <origin xyz = "0.01 0.0 0" rpy = "0 0 0"/>
-    </ezgripper_palm>
+    <xacro:ezgripper_palm prefix="${prefix}2" parent_link="${prefix}_ezgripper_mount">
+      <origin xyz = "0.01 0.0 0" rpy = "0 0 0"/>
+    </xacro:ezgripper_palm>
 
-    <ezgripper_palm prefix="${prefix}3" parent_link="${prefix}_ezgripper_mount">
-    <origin xyz = "0.01 0.0 -0.068" rpy = "0 0 0"/>
-    </ezgripper_palm>
+    <xacro:ezgripper_palm prefix="${prefix}3" parent_link="${prefix}_ezgripper_mount">
+      <origin xyz = "0.01 0.0 -0.068" rpy = "0 0 0"/>
+    </xacro:ezgripper_palm>
 
 </xacro:macro>
 
@@ -94,28 +91,28 @@
         <limit effort="0" lower="-1.57075" upper="0.25" velocity="3.67"/>
     </joint>
 
-    <ezgripper_finger_L1 prefix="${prefix}" postfix="1" reflect="1" />
-    <ezgripper_finger_L1 prefix="${prefix}" postfix="2" reflect="1" />
+    <xacro:ezgripper_finger_L1 prefix="${prefix}" postfix="1" reflect="1" />
+    <xacro:ezgripper_finger_L1 prefix="${prefix}" postfix="2" reflect="1" />
 
-    <ezgripper_finger_L2 prefix="${prefix}" postfix="1" reflect="1" />
-    <ezgripper_finger_L2 prefix="${prefix}" postfix="2" reflect="1" />
+    <xacro:ezgripper_finger_L2 prefix="${prefix}" postfix="1" reflect="1" />
+    <xacro:ezgripper_finger_L2 prefix="${prefix}" postfix="2" reflect="1" />
 
-    <ezgripper_finger_pad prefix="${prefix}" postfix="1" reflect="1" />
-    <ezgripper_finger_pad prefix="${prefix}" postfix="2" reflect="1" />
+    <xacro:ezgripper_finger_pad prefix="${prefix}" postfix="1" reflect="1" />
+    <xacro:ezgripper_finger_pad prefix="${prefix}" postfix="2" reflect="1" />
 
-    <ezgripper_knuckle_palm_L1 prefix="${prefix}" postfix="1" reflectY="1" reflectZ="1" reflectR="-1" mimic_test="false"/>
-    <ezgripper_knuckle_palm_L1 prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="1" mimic_test="false"/>
+    <xacro:ezgripper_knuckle_palm_L1 prefix="${prefix}" postfix="1" reflectY="1" reflectZ="1" reflectR="-1" mimic_test="false"/>
+    <xacro:ezgripper_knuckle_palm_L1 prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="1" mimic_test="false"/>
 
-    <ezgripper_knuckle_L1_L2 prefix="${prefix}" postfix="1" reflectY="1" reflectZ="1" reflectR="-1" mimic_test="false"/>
-    <ezgripper_knuckle_L1_L2 prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="1" mimic_test="false"/>
+    <xacro:ezgripper_knuckle_L1_L2 prefix="${prefix}" postfix="1" reflectY="1" reflectZ="1" reflectR="-1" mimic_test="false"/>
+    <xacro:ezgripper_knuckle_L1_L2 prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="1" mimic_test="false"/>
 
-    <ezgripper_joint_finger_pad prefix="${prefix}" postfix="1" reflectY="1" reflectZ="1" reflectR="1" mimic_test="false"/>
-    <ezgripper_joint_finger_pad prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="-1" mimic_test="false"/>
+    <xacro:ezgripper_joint_finger_pad prefix="${prefix}" postfix="1" reflectY="1" reflectZ="1" reflectR="1" mimic_test="false"/>
+    <xacro:ezgripper_joint_finger_pad prefix="${prefix}" postfix="2" reflectY="-1" reflectZ="1" reflectR="-1" mimic_test="false"/>
 
-    <ezgripper_knuckle_trans prefix="${prefix}" postfix="1"/>
-    <ezgripper_knuckle_trans prefix="${prefix}" postfix="2"/>
+    <xacro:ezgripper_knuckle_trans prefix="${prefix}" postfix="1"/>
+    <xacro:ezgripper_knuckle_trans prefix="${prefix}" postfix="2"/>
 
-    <gazebo_knuckle_jsp prefix="${prefix}" />
+    <xacro:gazebo_knuckle_jsp prefix="${prefix}" />
 
 </xacro:macro>
 
@@ -276,23 +273,20 @@
 </xacro:macro>
 
 <xacro:macro name="gazebo_knuckle_jsp" params="prefix">
-
-  <xacro:if value="$(arg activate_control)">
-    <gazebo>
-      <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
-        <jointName>${prefix}_ezgripper_knuckle_palm_L1_1,${prefix}_ezgripper_knuckle_palm_L1_2  </jointName>
-      </plugin>
-    </gazebo>
-  </xacro:if>
-
+  
+  <gazebo>
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+      <jointName>${prefix}_ezgripper_knuckle_palm_L1_1,${prefix}_ezgripper_knuckle_palm_L1_2  </jointName>
+    </plugin>
+  </gazebo>
 
 </xacro:macro>
 
-<xacro:if value="$(arg activate_control)">
-  <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    </plugin>
- </gazebo>
-</xacro:if>
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/minilift</robotNamespace>
+  </plugin>
+</gazebo>
 
 </robot>
