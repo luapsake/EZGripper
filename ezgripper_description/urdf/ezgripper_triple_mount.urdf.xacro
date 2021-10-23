@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot name="ezgripper" xmlns:xacro="http://ros.org/wiki/xacro">
 
-
+<!-- Toggle old behaviour -->
+<xacro:arg name="activate_control" default="false" />
 
 <xacro:include filename="$(find minilift_description)/urdf/macros.xacro" />
 
@@ -274,19 +275,22 @@
 
 <xacro:macro name="gazebo_knuckle_jsp" params="prefix">
   
-  <gazebo>
-    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
-      <jointName>${prefix}_ezgripper_knuckle_palm_L1_1,${prefix}_ezgripper_knuckle_palm_L1_2  </jointName>
-    </plugin>
-  </gazebo>
+  <xacro:if value="$(arg activate_control)">
+    <gazebo>
+      <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+        <jointName>${prefix}_ezgripper_knuckle_palm_L1_1,${prefix}_ezgripper_knuckle_palm_L1_2  </jointName>
+      </plugin>
+    </gazebo>
+  </xacro:if>
 
 </xacro:macro>
 
 
-<gazebo>
-  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    <robotNamespace>/minilift</robotNamespace>
-  </plugin>
-</gazebo>
+<xacro:if value="$(arg activate_control)">
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    </plugin>
+ </gazebo>
+</xacro:if>
 
 </robot>
